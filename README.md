@@ -32,8 +32,8 @@ Things you may want to cover:
 |user_id|integer|foreign_key: true|
 
 ### Association
-  belong_to :group
-  belong_to :user
+  belongs_to :group
+  belongs_to :user
 
 ## groupsテーブル
 |Column|Type|Options|
