@@ -1,0 +1,154 @@
+$section-color:#ffffff;
+$section-color2:#38aef0;
+$section-color3:#333333;
+$section-color4:#999999;
+
+@mixin position{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin form_width{
+  width:100%;
+}
+
+.side-bar {
+  background-color:#2f3e51;
+  width:300px;
+  height: 100vh;
+  &__top{
+    background-color:#253141;
+    height:100px;
+    @include position;
+    .top-items {
+      width:260px;
+      height:20px;
+      margin:0 20px 0 20px ;
+      @include position;
+      a{
+        color: $section-color;
+        text-decoration: none;
+       }
+      .top-items__icon--edit{
+        margin-right:5px;
+       }
+      &__name{
+        color:$section-color;
+        font-size: 16px;
+       }
+    }
+  }
+
+ .group{
+    color:$section-color;
+    font-weight: bold;
+    margin:20px 20px 40px 20px;
+    &__name{
+      font-size: 15px;
+    }
+    &__list{
+      font-size: 11px;
+      margin-top:5px;
+    }
+  }
+}
+
+.wrapper{
+  display: flex; 
+}
+
+.chat-main {
+  width: calc(100vw - 300px);
+  height: 100vh;
+
+  &__top {
+    background-color: $section-color;
+    border-bottom:1px solid #eeeeee;
+    height:100px;
+    padding:0 40px;
+    .chat-group{
+      @include position;
+      &__name{
+        margin-top:35px;
+        color:$section-color3;
+        font-size:20px;
+      }
+      &__member{
+        margin-top:15px;
+        color:$section-color4;
+        font-size:12px;
+      }
+      &__edit{
+        width:72px;
+        height:40px;
+        border:1px solid $section-color2;
+        padding-top: 7px;
+      }
+      a{
+        color:$section-color2;
+        font-size:16px;
+        padding:28px 20px;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__center {
+    background-color: #fafafa;
+    height: calc(100vh - 190px);
+    padding-left:40px;
+    .chat-message{
+      &__name{
+        color:$section-color3;
+        font-size:16px;
+        display:flex;
+        padding:35px 0 12px 0;
+        &--date{
+          color:$section-color4;
+          font-size:12px;
+        }
+      }
+      &__comment{
+        color:#434A54;
+        font-size:14px;
+        padding-bottom:11px;
+      }
+    }
+  }
+
+  &__bottom {
+    background-color: #d2d2d2;
+    height: 90px;
+    padding:10px 40px 10px 50px;
+    .contact-form{
+      @include position;
+      @include form_width;
+      padding-top: 10px;
+      &__send{
+        height: 50px;
+        color:$section-color;
+        background-color:$section-color2;
+        border:1px solid $section-color2;
+        padding:5px 30px;
+      }
+      &__left{
+        position:relative;
+        margin-right:15px;
+        @include form_width;
+        @include position;
+        &--image{
+          position:absolute;
+          right:10px;
+          input{
+            display: none;
+          }
+        }
+        &--textarea{
+         @include form_width;
+         height:50px;
+         padding-left: 10px;
+        }
+      }
+    }
+  }
+}
