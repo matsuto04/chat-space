@@ -11,11 +11,11 @@
   
   - current_user.groups.each do |group|
     .group
-      =link_to "#",class: "group__name" do
+      = link_to group_messages_path(group),class: "group__name" do
         .group__link--name
           = group.name
         .group__link--list
-          まだメッセージはありません。
+          = group.show_last_message
 
    
     
