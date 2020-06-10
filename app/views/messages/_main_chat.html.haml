@@ -3,32 +3,28 @@
     .chat-group
       .chat-group__info
         .chat-group__name
-          test
+          =@group.name
         .chat-group__member
-          Member:
+         
+          %ul.chat-group__list
+          Member：
+          - @group.users.each do |user|
+            %li.chat-group__list--member= user.name
+          
       .chat-group__edit
-        = link_to "Edit","#"
+        = link_to "Edit",edit_group_path(@group)
 
   .chat-main__center
-    .chat-message
-      .chat-message__name
-        masa
-        .chat-message__name--date
-          2020/6/7
-      .chat-message__comment
-        おはよう！
-      .chat-message__name
-        masa
-        .chat-message__name--date
-          2020/6/7
-      .chat-message__comment
-        こんにちは！
+    = render @messages
+      
 
   .chat-main__bottom
-    %form.contact-form
+    =form_with model: [@group,@message], html: {class: "contact-form"},local: true do |f|
       .contact-form__left
-        %input.contact-form__left--textarea{:type => "textarea",:placeholder => "type a message"}
-        %label{class: "contact-form__left--image"}
-          = icon('fas','image')
-          %input{type:"file"}
-      %input.contact-form__send{:type=>"submit",:value=>"Send"}
+        =f.text_field :boy, class: 'contact-form__left--textarea',placeholder: 'type a message'
+        =f.label :image, class: "contact-form__left--image" do
+          = icon('far', 'image')
+          = f.file_field :image
+      = f.submit 'Send', class: 'contact-form__send'
+
+    

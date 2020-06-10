@@ -1,0 +1,12 @@
+
+.chat-message
+  .chat-message__name
+    .chat-message__name--userName
+      = message.user.name
+    .chat-message__name--date
+      = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  .chat-message__comment
+    - if message.boy.present?
+      %p.Message.boy
+        = message.boy
+    = image_tag message.image.url, class: 'Message__image' if message.image.present?
