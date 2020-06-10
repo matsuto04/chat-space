@@ -11,7 +11,9 @@ $section-color4:#999999;
 @mixin form_width{
   width:100%;
 }
-
+*{
+  box-sizing:border-box;
+}
 .side-bar {
   background-color:#2f3e51;
   width:300px;
