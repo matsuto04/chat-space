@@ -1,7 +1,8 @@
 $(function(){
   function buildPost(message){
     if ( message.image ) {
-      let html = `<div class="chat-message">
+      let html = `<div class="chat-message" data-message-id=${message.id}>
+                    <div class="chat-message">
                     <div class="chat-message__name">
                       <div class="chat-message__name--userName">
                         ${message.user_name}
@@ -19,7 +20,8 @@ $(function(){
                 </div>`
     return html;
     }else{
-      let html = `<div class="chat-message">
+      let html = `<div class="chat-message" data-message-id=${message.id}>
+                    <div class="chat-message">
                     <div class="chat-message__name">
                       <div class="chat-message__name--userName">
                         ${message.user_name}
@@ -62,5 +64,27 @@ $(function(){
       $('.contact-form__send').removeAttr("disabled");
     })
   });
+  let reloadMessages = function() {
+    let last_message_id = $('.chat-message:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: "GET",
+      dataType: "json",
+      data: {id: last_message_id}
+    })
+    done(function(messages){
+      if (messages.length !== 0) {
+        let insertHTML ="";
+        $each(messages, function(i,message){
+          insertHTML += buildHTML(message)
+        });
+        $(".chat-main__center").append(insertHTML);
+      }
+    })
+    fail(function(){
+      console.log('error');
+    });
+  };
+  
 });
 
