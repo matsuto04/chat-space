@@ -1,7 +1,8 @@
 $(function(){
   function buildPost(message){
     if ( message.image ) {
-      let html = `<div class="chat-message">
+      let html = `<div class="chat-message" data-message-id=${message.id}>
+                    <div class="chat-message">
                     <div class="chat-message__name">
                       <div class="chat-message__name--userName">
                         ${message.user_name}
@@ -19,7 +20,8 @@ $(function(){
                 </div>`
     return html;
     }else{
-      let html = `<div class="chat-message">
+      let html = `<div class="chat-message" data-message-id=${message.id}>
+                    <div class="chat-message">
                     <div class="chat-message__name">
                       <div class="chat-message__name--userName">
                         ${message.user_name}
@@ -54,6 +56,7 @@ $(function(){
      $(".chat-main__center").append(html);
      $(".contact-form")[0].reset();
      $('.chat-main__center').animate({ scrollTop: $('.chat-main__center')[0].scrollHeight});
+     
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
