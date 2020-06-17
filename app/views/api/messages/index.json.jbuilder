@@ -1,4 +1,4 @@
-json.arry! @messages do |message|
+json.array! @messages do |message|
   json.boy message.boy
   json.image message.image.url
   json.created_at message.created_at.strftime("%Y年%m月%d日 %H時%M分")
