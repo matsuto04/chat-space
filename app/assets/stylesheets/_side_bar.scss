@@ -41,24 +41,24 @@ $section-color4:#999999;
        }
     }
   }
-
+ 
  .group{
     color:$section-color;
     font-weight: bold;
     margin:20px 20px 40px 20px;
    
-    
+    a{
+      text-decoration: none;
+     } 
     .group__link--name{
       font-size: 15px;
       color:$section-color;
-      text-decoration: none;
       display:block;
     }
     .group__link--list{
       font-size: 11px;
       margin-top:5px;
       color:$section-color;
-      text-decoration: none;
     }
   }
 }
