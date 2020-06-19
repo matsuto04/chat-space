@@ -8,14 +8,14 @@
           = icon('far', 'edit', )
         = link_to edit_user_path(current_user),class: "top-items__icon--cog" do
           = icon('fas', 'cog', )
-  
-  - current_user.groups.each do |group|
-    .group
-      = link_to group_messages_path(group),class: "group__name" do
-        .group__link--name
-          = group.name
-        .group__link--list
-          = group.show_last_message
+  .side-bar__main
+    - current_user.groups.each do |group|
+      .group
+        = link_to group_messages_path(group),class: "group__name" do
+          .group__link--name
+            = group.name
+          .group__link--list
+            = group.show_last_message
 
    
     
