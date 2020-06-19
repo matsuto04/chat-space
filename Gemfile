@@ -41,7 +41,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
 
-  Dir.glop("lib/capistrano/tasks/*.rake").each { |r| import r }
+  Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 end
 
 group :development do
